@@ -1,0 +1,438 @@
+:root {
+  --background-color: rgb(6, 11, 25);
+  --border-color: rgb(255, 255, 255, 0.1);
+  --highlight-color: rgb(126, 87, 194);
+  --yt-color: rgb(229, 57, 53);
+}
+
+body {
+  background-color: var(--background-color);
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  margin: 0px;
+  overflow: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1, h3, a, p, span {
+  font-family: "Rubik", sans-serif;
+  font-weight: 400;
+  color: white;
+  margin: 0px;
+}
+
+h2 {
+  font-family: 'Space Mono', monospace;
+  font-size: clamp(3rem, 10vw, 10rem);
+  color: white;
+  padding: 0rem clamp(1rem, 2vw, 3rem);
+  border-radius: clamp(0.4rem, 0.75vw, 1rem);
+}
+
+h2:hover {
+  background-color: rgb(255, 54, 54);
+  color: black;
+}
+
+a {
+  text-decoration: none;
+}
+
+nav {
+  display: flex;
+  width: 100%;
+  border-bottom: 1px solid var(--border-color);
+}
+
+nav .nav-section {
+  padding: 3rem 2rem;
+  display: flex;
+  gap: 1rem;
+  border-left: 1px solid var(--border-color);
+  align-items: center;
+  justify-content: center;
+}
+
+#nav-mobile-section {
+  display: flex;
+  flex-basis: calc(100% * (2 / 3));
+  z-index: 2;
+}
+
+#nav-toggle-button { 
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  border-left: 1px solid var(--border-color);
+  color: white;
+  cursor: pointer;
+  display: none;
+  gap: 0.8rem;
+  height: 100%;
+  justify-content: center;
+  outline: none;
+  padding: 0rem 3rem;
+  position: relative;
+  z-index: 3;
+}
+
+#nav-toggle-button:hover,
+#nav-toggle-button:hover > span {
+  color: var(--highlight-color);
+}
+
+#nav-toggle-button > span,
+#nav-toggle-button > i { 
+  display: inline-block;
+  height: 1rem;
+  line-height: 1rem;
+}
+
+#nav-social-section,
+#nav-contact-section {
+  display: flex;
+  flex-grow: 1;
+}
+
+#nav-logo-section {
+  flex-basis: calc(100% / 3);
+  justify-content: flex-start;
+}
+
+#nav-logo-section > a > i {
+  font-size: 2.5rem;
+}
+
+#nav-link-section {
+  flex-basis: 50%;
+  gap: 6rem; 
+}
+
+/* #nav-social-section {
+  gap: 3rem;
+} */
+
+main {
+  flex-grow: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+main > article {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  grid-template-rows: 3fr 1fr 0.5fr; 
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  transition: transform 400ms ease;  
+}
+
+main > article[data-status="inactive"] {
+  transform: translateX(-100%);
+  transition: none;
+}
+
+main > article[data-status="active"] {
+  transform: translateX(0%);
+}
+
+main > article[data-status="before"] {
+  transform: translateX(-100%);
+}
+
+main > article[data-status="after"] {
+  transform: translateX(100%);
+}
+
+main > article[data-status="becoming-active-from-before"] {
+  transform: translateX(-100%);
+  transition: none;
+}
+
+main > article[data-status="becoming-active-from-after"] {
+  transform: translateX(100%);
+  transition: none;
+}
+
+main > article > .article-section {
+  height: 100%;
+  display: flex;
+}
+
+main > article > .article-description-section,
+main > article > .article-nav-section {
+  border-left: 1px solid var(--border-color);
+}
+
+main > article > .article-title-section,
+main > article > .article-nav-section {
+  border-top: 1px solid var(--border-color);
+}
+
+main > article:first-child > .article-image-section {
+  background-image: url("https://raw.githubusercontent.com/charchit7/profile/main/cs_1.png");
+}
+
+main > article:nth-child(3) > .article-image-section {
+  background-image: url("https://raw.githubusercontent.com/charchit7/profile/main/Frame%201.png");
+}
+
+main > article:nth-child(2) > .article-image-section {
+  background-image: url("https://raw.githubusercontent.com/charchit7/profile/main/DreamShaper_v5_cute_tiny_hyperrealistic_Anime_robot_chibi_ado_2.jpg");
+}
+
+/* main > article:nth-child(4) > .article-image-section {
+  background-image: url("https://images.unsplash.com/photo-1660766877755-4cac24f6cf21?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2232&q=80");
+} */
+
+main > article > .article-image-section {
+  background-position: center;
+  background-size: cover;
+}
+
+
+main > article > .article-description-section {
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 4rem; 
+}
+
+main > article > .article-description-section > p {
+  color: rgba(255, 255, 255, 0.63);
+  font-size: 1.25em;
+}
+
+main > article > .article-description-section > p  > a:hover {
+  text-decoration: underline;
+}
+
+main > article > .article-title-section {
+  align-items: center; 
+  justify-content: space-between;
+  padding: 2rem 4rem;
+}
+
+main > article > .article-title-section * {
+  color: white;
+}
+
+main > article > .article-title-section > h2 {
+  flex-basis: 50%;
+  font-family: "Montserrat", sans-serif;
+  font-size: 2.3rem;
+  line-height: 2.0rem;
+  margin: 0px;
+  text-transform: uppercase;
+}
+
+main > article > .article-title-section > i {
+  color: rgba(255, 255, 255, 0.75);
+  font-size:  2.5rem;
+}
+
+main > article > .article-nav-section {
+  border-left: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: row; /* Change to row to place buttons side by side */
+  justify-content: space-between; /* Spread out the buttons */
+  align-items: flex-end; /* Align buttons to the bottom */
+  padding: 0 1rem 1rem; /* Add padding to the bottom and sides */
+}
+
+main > article > .article-nav-section > .article-nav-button {
+  background-color: transparent;
+  flex-grow: 1;
+  border: none;
+  outline: none;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 3rem;
+  cursor: pointer;
+  transition: background-color 400ms ease;
+  padding: 0.5rem;
+  flex: 0 0 auto; /* Prevent buttons from growing or shrinking */
+}
+
+main > article > .article-nav-section > .article-nav-button:hover {
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+main > article > .article-nav-section > .article-nav-button:nth-child(2) {
+  border-left: 1px solid var(--border-color);
+}
+
+@media(max-width: 800px) {
+  nav {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #nav-mobile-section {
+    width: 100%;
+    display: none;
+  }
+
+  nav[data-toggled="true"] #nav-mobile-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #nav-toggle-button {
+    display: block;
+    margin: 1rem;
+  }
+
+  main > article {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto 1fr auto;
+  }
+
+  .article-image-section {
+    height: 200px;
+  }
+
+  .article-description-section {
+    padding: 1rem;
+  }
+
+  .article-title-section > h2 {
+    font-size: 2rem;
+    line-height: 2.2rem;
+  }
+
+  .article-nav-section {
+    flex-direction: row;
+    justify-content: space-between; /* Spread out buttons on mobile */
+    padding: 0.5rem 1rem; /* Add some padding around the buttons */
+    position: fixed; /* Fix the position at the bottom */
+    bottom: 0; /* Align to the bottom of the viewport */
+    left: 0;
+    right: 0;
+    background-color: var(--background-color); /* Match the background color */
+    z-index: 10; /* Ensure it's above other content */
+  }
+
+  .article-nav-button {
+    font-size: 2rem; /* Slightly smaller font size for mobile */
+    padding: 0.5rem;
+  }
+
+  .scrollable-content {
+    max-height: 300px;
+  }
+
+  main {
+    padding-bottom: 60px; /* Adjust this value based on the height of your nav buttons */
+  }
+}
+
+@media(max-width: 480px) {
+  .article-title-section > h2 {
+    font-size: 1.5rem;
+    line-height: 1.7rem;
+  }
+
+  .article-description-section > p {
+    font-size: 1rem;
+  }
+
+  .bullet-list {
+    font-size: 1rem;
+  }
+
+  .highlight {
+    font-size: 0.9rem;
+  }
+}
+
+-- YT link / Source link styles --
+
+main > article > .article-description-section > p  > .source-link {
+  color: var(--highlight-color);
+  display: inline;
+}
+
+main > article .yt-link,
+main > article .yt-link > i {
+  color: var(--yt-color);
+  display: inline;
+}
+
+/* extra changes we are making for the website */
+.article-description-section .article-text {
+  vertical-align: top;
+}
+
+.bullet-list {
+  list-style-type: disc;
+  /* margin-left: 20px; */
+  color: rgba(255, 255, 255, 0.671);
+  font-size: 1.2em;
+}
+
+.article-description-section {
+  /* Remove the max-height property from the container */
+  /* max-height: 10vh; */
+  /* overflow: auto; */
+
+  /* Add margin or padding to create space between paragraphs */
+  padding: 2rem;
+}
+
+.article-description-section p{
+  /* Set max-height and overflow for the <p> element */
+  max-height: 70vh; /* You can adjust this value as needed */
+  /* overflow: auto; */
+  /* word-wrap: break-word; */
+}
+
+.scrollable-content {
+  max-height: 390px; /* Set the desired height for scrolling */
+  overflow-y: auto;
+}
+
+
+.highlight {
+  background-color: rgb(117, 252, 223); /* Set the background color for highlighting */
+  color: rgb(0, 5, 73); /* Change the text color inside the highlighted area */
+  font-weight: bold; /* Make the text bold */
+  /* border: 1px solid orange; Add an orange border around the highlighted area */
+  /* padding: 5px; Add some padding around the highlighted area */
+  /* border-radius: 5px; Round the corners of the highlighted area */
+  text-decoration: underline; /* Underline the text inside the highlighted area */
+  /* You can continue adding more styles as needed */
+}
+
+main > article > .article-nav-section > .article-nav-button {
+  background-color: transparent;
+  flex-grow: 1;
+  border: none;
+  outline: none;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem;
+}
+
+main > article > .article-nav-section > .article-nav-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+main > article > .article-nav-section > .article-nav-button i {
+  font-size: 1.5rem;
+}
+
+main > article > .article-nav-section > .article-nav-button span {
+  font-size: 1rem;
+}
