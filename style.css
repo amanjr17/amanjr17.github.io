@@ -177,7 +177,7 @@ main > article > .article-nav-section {
 }
 
 main > article:first-child > .article-image-section {
-  background-image: url("https://github.com/amanjr17/amanjr17.github.io/blob/bbde0ed764450ee52fbf7aa8d981a36a06640cb0/IMG_20220501_222443_913.jpg");
+  background-image: url("IMG_20220501_222443_913.jpg");
 }
 
 main > article:nth-child(3) > .article-image-section {
